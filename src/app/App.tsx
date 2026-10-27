@@ -36,7 +36,7 @@ import AdminSettings from '../pages/admin/SettingsPage'
 export default function App() {
   return (
     <>
-      <LoadingScreen />
+      {/* <LoadingScreen /> */}
       <Routes>
         <Route element={<StoreLayout />}>
           <Route path="/" element={<HomePage />} />
