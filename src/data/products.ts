@@ -19,7 +19,7 @@ import imgMuscle from '../images/shop hero section images/drinks images/Monster_
 import imgValentino from '../images/shop hero section images/drinks images/Monster_Valentino_Rossi-removebg-preview.png'
 import imgKiwiStraw from '../images/shop hero section images/drinks images/REVIEW__Monster_Reserve_Kiwi_Strawberry_Energy_Drink-removebg-preview.png'
 import imgGinger from '../images/shop hero section images/drinks images/The_Golden_Age_of_American_Ginger_Beer__A_Journey_with_SoSweet___SoSweet_s_Craft_Soda_Revolution-removebg-preview.png'
-import imgCafeLatte from '../images/shop hero section images/drinks images/_モンスター_より_カフェラテ味のエナジードリンクが誕生-removebg-preview.png'
+import imgCafeLatte from '../images/shop hero section images/drinks images/moster cafe latte.png'
 import imgD10 from '../images/shop hero section images/drinks images/download__10_-removebg-preview.png'
 import imgD11 from '../images/shop hero section images/drinks images/download__11_-removebg-preview.png'
 import imgD12 from '../images/shop hero section images/drinks images/download__12_-removebg-preview.png'
