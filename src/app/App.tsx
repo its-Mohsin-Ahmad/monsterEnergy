@@ -33,8 +33,6 @@ import AdminInventory from '../pages/admin/InventoryPage'
 import AdminMessages from '../pages/admin/MessagesPage'
 import AdminSettings from '../pages/admin/SettingsPage'
 
-import NotFoundPage from '../pages/NotFoundPage'
-
 export default function App() {
   return (
     <>
@@ -73,7 +71,6 @@ export default function App() {
           <Route path="messages" element={<AdminMessages />} />
           <Route path="settings" element={<AdminSettings />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   )
