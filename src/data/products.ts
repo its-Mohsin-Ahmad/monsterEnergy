@@ -31,6 +31,7 @@ import imgD9 from '../images/shop hero section images/drinks images/download__9_
 import imgHoney from '../images/shop hero section images/drinks images/Honey__It_s_Time_to_Talk_About_Artificial_Sweeteners-removebg-preview.png'
 import imgGonnjamin from '../images/shop hero section images/drinks images/Gönnjamin-removebg-preview.png'
 import imgDrinkMonster from '../images/shop hero section images/drinks images/Drink_-__monsterenergy-removebg-preview.png'
+import imgUltraSunrise from '../images/shop hero section images/drinks images/monster energy ultra sunrize.png'
 
 export const products: Product[] = [
   {
@@ -68,8 +69,8 @@ export const products: Product[] = [
     category: 'ultra',
     variant: '500ml Can',
     price: 3.19,
-    image: imgBruja,
-    gallery: [imgBruja],
+    image: imgUltraSunrise,
+    gallery: [imgUltraSunrise],
     description: 'A citrus sunrise with zero sugar. Wake up your senses with orange and passionfruit notes layered over Monster\'s signature energy blend.',
     stock: 80,
     status: 'published',
