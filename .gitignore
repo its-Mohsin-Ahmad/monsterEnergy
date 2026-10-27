@@ -1,3 +1,6 @@
+# GitHub Actions (needs workflow scope - deploy via gh-pages instead)
+.github/
+
 # Dependencies
 node_modules/
 
