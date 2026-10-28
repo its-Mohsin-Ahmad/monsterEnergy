@@ -40,8 +40,6 @@ export function Footer() {
           <div className="text-sm font-semibold mb-3">Account</div>
           <div className="space-y-2 text-sm text-text-2">
             <Link to="/profile" className="block hover:text-neon">Profile</Link>
-            <Link to="/orders" className="block hover:text-neon">Orders</Link>
-            <Link to="/settings" className="block hover:text-neon">Settings</Link>
           </div>
         </div>
       </div>

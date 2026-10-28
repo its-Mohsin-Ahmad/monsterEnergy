@@ -1,15 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { LayoutDashboard, Package, ShoppingCart, Users, BarChart3, Boxes, MessageSquare, Settings } from 'lucide-react'
+import { LayoutDashboard, Package, Users, BarChart3, Boxes, MessageSquare } from 'lucide-react'
 
 const nav = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/admin/products', label: 'Products', icon: Package },
-  { to: '/admin/orders', label: 'Orders', icon: ShoppingCart },
   { to: '/admin/customers', label: 'Customers', icon: Users },
   { to: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
   { to: '/admin/inventory', label: 'Inventory', icon: Boxes },
   { to: '/admin/messages', label: 'Messages', icon: MessageSquare },
-  { to: '/admin/settings', label: 'Settings', icon: Settings },
 ]
 
 export function AdminLayout() {

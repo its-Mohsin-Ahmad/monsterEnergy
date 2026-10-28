@@ -4,9 +4,7 @@ import {
   ShoppingBag,
   LayoutGrid,
   Zap,
-  FileText,
   MessageSquare,
-  Settings,
   User,
   LogOut,
   X,
@@ -30,9 +28,7 @@ const PRIMARY_NAV: NavItemDef[] = [
   { to: '/shop', label: 'Shop', icon: ShoppingBag },
   { to: '/categories', label: 'Collections', icon: LayoutGrid },
   { to: '/energy', label: 'Energy', icon: Zap },
-  { to: '/orders', label: 'Orders', icon: FileText },
   { to: '/chat', label: 'Community', icon: MessageSquare },
-  { to: '/settings', label: 'Settings', icon: Settings },
 ]
 
 export function StoreSidebar() {
