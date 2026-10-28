@@ -10,7 +10,6 @@ export default function CheckoutPage() {
   const items = useCartStore((s) => s.items)
   const clear = useCartStore((s) => s.clear)
   const products = useDemoStore((s) => s.products)
-  const addOrder = useDemoStore((s) => s.addOrder)
   const profile = useDemoStore((s) => s.profile)
   const showToast = useUIStore((s) => s.showToast)
 
@@ -41,19 +40,9 @@ export default function CheckoutPage() {
   }
 
   const placeOrder = () => {
-    const id = 'ord-' + Date.now()
-    const num = 'ORD-' + (1000 + Math.floor(Math.random() * 9000))
-    const order = {
-      id, number: num, date: new Date().toISOString().slice(0, 10),
-      customerId: 'demo', customerName: info.name,
-      items: items.map((i) => ({ productId: i.productId, quantity: i.quantity, price: products.find((p) => p.id === i.productId)?.price || 0 })),
-      subtotal, shipping, tax, total,
-      paymentStatus: 'paid' as const, fulfillmentStatus: 'pending' as const, status: 'pending' as const,
-    }
-    addOrder(order)
     clear()
     showToast('Demo order placed')
-    navigate(`/order-confirmation/${id}`)
+    navigate('/order-confirmation/demo')
   }
 
   const steps = ['Information', 'Delivery', 'Review', 'Confirmation']

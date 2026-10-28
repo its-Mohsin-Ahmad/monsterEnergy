@@ -3,9 +3,7 @@ import { useDemoStore } from '../../store/demoStore'
 import { formatCurrency } from '../../utils/formatCurrency'
 
 export default function AdminAnalytics() {
-  const orders = useDemoStore((s) => s.orders)
   const products = useDemoStore((s) => s.products)
-  const sales = orders.reduce((a, o) => a + o.total, 0)
   const data = [
     { label: 'Jan', value: 420 }, { label: 'Feb', value: 510 }, { label: 'Mar', value: 480 },
     { label: 'Apr', value: 620 }, { label: 'May', value: 700 }, { label: 'Jun', value: 640 },
@@ -14,10 +12,10 @@ export default function AdminAnalytics() {
     <div className="space-y-6">
       <h1 className="font-display text-2xl">Analytics</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Revenue</div><div className="font-display text-2xl text-neon">{formatCurrency(sales)}</div></div>
-        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Orders</div><div className="font-display text-2xl text-neon">{orders.length}</div></div>
+        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Revenue</div><div className="font-display text-2xl text-neon">{formatCurrency(0)}</div></div>
+        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Orders</div><div className="font-display text-2xl text-neon">0</div></div>
         <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Products</div><div className="font-display text-2xl text-neon">{products.length}</div></div>
-        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Avg Order</div><div className="font-display text-2xl text-neon">{formatCurrency(sales / (orders.length || 1))}</div></div>
+        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Avg Order</div><div className="font-display text-2xl text-neon">{formatCurrency(0)}</div></div>
       </div>
       <SalesChart data={data} />
       <div className="bg-card border border-border rounded-card p-5">

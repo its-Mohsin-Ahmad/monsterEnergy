@@ -5,9 +5,7 @@ import { formatCurrency } from '../../utils/formatCurrency'
 
 export default function AdminDashboard() {
   const products = useDemoStore((s) => s.products)
-  const orders = useDemoStore((s) => s.orders)
   const customers = useDemoStore((s) => s.customers)
-  const sales = orders.reduce((a, o) => a + o.total, 0)
   const chartData = [
     { label: 'Mon', value: 120 }, { label: 'Tue', value: 200 }, { label: 'Wed', value: 150 },
     { label: 'Thu', value: 280 }, { label: 'Fri', value: 320 }, { label: 'Sat', value: 260 }, { label: 'Sun', value: 190 },
@@ -19,8 +17,7 @@ export default function AdminDashboard() {
         <p className="text-sm text-muted">Admin dashboard — demonstration data.</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard title="Demo Sales" value={formatCurrency(sales)} />
-        <StatCard title="Demo Orders" value={orders.length} />
+        <StatCard title="Demo Sales" value={formatCurrency(0)} />
         <StatCard title="Demo Customers" value={customers.length} />
         <StatCard title="Active Products" value={products.filter((p) => p.status === 'published').length} />
       </div>
@@ -39,13 +36,7 @@ export default function AdminDashboard() {
         </div>
         <div className="bg-card border border-border rounded-card p-5">
           <div className="font-display text-lg mb-3">Recent Orders</div>
-          {orders.slice(0, 5).map((o) => (
-            <div key={o.id} className="flex justify-between py-2 border-b border-border/50 text-sm">
-              <span>{o.number}</span>
-              <span className="text-muted">{o.customerName}</span>
-              <span className="text-neon">{formatCurrency(o.total)}</span>
-            </div>
-          ))}
+          <div className="text-sm text-muted">No orders in demo data.</div>
         </div>
       </div>
       <div className="space-y-2">
