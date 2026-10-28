@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
-import aboutBanner from '../images/about/about banner.png'
 
 export default function AboutPage() {
   return (
     <div className="px-4 md:px-8 py-6 space-y-12">
       <section className="relative rounded-card overflow-hidden border border-border h-64">
-        <img src={aboutBanner} alt="About hero banner — Monster Energy brand spirit" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={`${import.meta.env.BASE_URL}images/about/about-banner.png`} alt="About hero banner — Monster Energy brand spirit" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 h-full flex items-center px-8">
           <h1 className="font-display text-4xl md:text-6xl">BUILT AROUND A BOLD SPIRIT.</h1>
