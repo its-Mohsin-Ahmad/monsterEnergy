@@ -11,11 +11,9 @@ export default function AdminAnalytics() {
   return (
     <div className="space-y-6">
       <h1 className="font-display text-2xl">Analytics</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
         <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Revenue</div><div className="font-display text-2xl text-neon">{formatCurrency(0)}</div></div>
-        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Orders</div><div className="font-display text-2xl text-neon">0</div></div>
         <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Products</div><div className="font-display text-2xl text-neon">{products.length}</div></div>
-        <div className="bg-card border border-border rounded-card p-4"><div className="text-xs text-muted">Avg Order</div><div className="font-display text-2xl text-neon">{formatCurrency(0)}</div></div>
       </div>
       <SalesChart data={data} />
       <div className="bg-card border border-border rounded-card p-5">
