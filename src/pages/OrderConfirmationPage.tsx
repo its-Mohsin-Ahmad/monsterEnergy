@@ -25,7 +25,6 @@ export default function OrderConfirmationPage() {
       </div>
       <div className="flex gap-3 justify-center">
         <Link to="/shop" className="bg-neon text-black font-semibold px-6 py-2.5 rounded-lg">Continue Shopping</Link>
-        <Link to={`/orders/${order.id}`} className="border border-border px-6 py-2.5 rounded-lg">View Order</Link>
       </div>
     </div>
   )
