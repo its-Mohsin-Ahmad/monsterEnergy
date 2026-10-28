@@ -17,8 +17,7 @@ export default function AdminCustomerDetails() {
           <div className="text-xs text-muted">Joined {customer.registeredAt}</div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        <div className="bg-card border border-border rounded-card p-4 text-center"><div className="font-display text-2xl text-neon">{customer.ordersCount}</div><div className="text-xs text-muted">Orders</div></div>
+      <div className="grid grid-cols-1 gap-3">
         <div className="bg-card border border-border rounded-card p-4 text-center"><div className="font-display text-2xl text-neon">${customer.totalSpent.toFixed(0)}</div><div className="text-xs text-muted">Spent</div></div>
       </div>
     </div>

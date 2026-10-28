@@ -34,10 +34,6 @@ export default function AdminDashboard() {
             </div>
           ))}
         </div>
-        <div className="bg-card border border-border rounded-card p-5">
-          <div className="font-display text-lg mb-3">Recent Orders</div>
-          <div className="text-sm text-muted">No orders in demo data.</div>
-        </div>
       </div>
       <div className="space-y-2">
         <div className="font-display text-lg">Inventory Alerts</div>

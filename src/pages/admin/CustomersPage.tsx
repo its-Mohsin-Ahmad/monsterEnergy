@@ -10,7 +10,6 @@ export default function AdminCustomers() {
   const rows = filtered.map((c) => ({
     name: c.name,
     email: c.email,
-    orders: c.ordersCount,
     spent: `$${c.totalSpent.toFixed(2)}`,
     joined: c.registeredAt,
     actions: <Link to={`/admin/customers/${c.id}`} className="text-neon text-xs hover:underline">View</Link>,
@@ -20,7 +19,7 @@ export default function AdminCustomers() {
       <h1 className="font-display text-2xl">Customers</h1>
       <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search..." className="bg-card border border-border rounded-lg px-4 py-2.5 text-sm w-full max-w-sm focus:border-neon outline-none" />
       <DataTable columns={[
-        { key: 'name', label: 'Name' }, { key: 'email', label: 'Email' }, { key: 'orders', label: 'Orders' },
+        { key: 'name', label: 'Name' }, { key: 'email', label: 'Email' },
         { key: 'spent', label: 'Spent' }, { key: 'joined', label: 'Joined' }, { key: 'actions', label: '' },
       ]} rows={rows} />
     </div>
