@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { LoadingScreen } from '../components/ui/LoadingScreen'
 import { StoreLayout } from '../components/layout/StoreLayout'
-import { AdminLayout } from '../components/layout/AdminLayout'
+// AdminLayout removed - using single unified dashboard
 
 import HomePage from '../pages/HomePage'
 import ShopPage from '../pages/ShopPage'
