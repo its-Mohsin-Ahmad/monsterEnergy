@@ -16,7 +16,7 @@ import OrderConfirmationPage from '../pages/OrderConfirmationPage'
 import ChatPage from '../pages/ChatPage'
 import ProfilePage from '../pages/ProfilePage'
 import WishlistPage from '../pages/WishlistPage'
-import DashboardPage from '../pages/DashboardPage'
+import UnifiedDashboardPage from '../pages/admin/UnifiedDashboardPage'
 
 export default function App() {
   return (
@@ -37,7 +37,7 @@ export default function App() {
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard/*" element={<UnifiedDashboardPage />} />
         </Route>
       </Routes>
     </>
