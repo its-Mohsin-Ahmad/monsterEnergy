@@ -5,6 +5,11 @@ import App from './app/App'
 import './styles/globals.css'
 import './styles/animations.css'
 
+// Clean up legacy store key from earlier builds to avoid stale image paths
+try {
+  localStorage.removeItem('monster-demo')
+} catch {}
+
 // Restore intended route from GitHub Pages 404.html SPA fallback
 const storedRoute = sessionStorage.getItem('spa-route')
 if (storedRoute) {
