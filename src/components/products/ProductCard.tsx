@@ -28,11 +28,11 @@ export function ProductCard({ product }: { product: Product }) {
         </button>
 
         {/* Standardized equal-sized can image across all cards with hover lift */}
-        <Link to={`/product/${p.slug}`} className="flex items-center justify-center w-full h-full group/can">
+        <Link to={`/product/${p.slug}`} className="flex items-center justify-center w-full h-full group/can relative z-0">
           <img
             src={p.image}
             alt={p.name}
-            className="drink-can h-36 max-h-36 w-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.65)] select-none transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-2 group-hover:rotate-6"
+            className="drink-can h-32 max-h-32 w-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.65)] select-none transition-all duration-300 ease-out group-hover:scale-[1.3] group-hover:rotate-[10deg] will-change-transform"
           />
         </Link>
       </div>

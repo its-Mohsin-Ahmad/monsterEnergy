@@ -18,15 +18,6 @@ import ProfilePage from '../pages/ProfilePage'
 import WishlistPage from '../pages/WishlistPage'
 import DashboardPage from '../pages/DashboardPage'
 
-import AdminDashboard from '../pages/admin/DashboardPage'
-import AdminProducts from '../pages/admin/ProductsPage'
-import AdminProductEditor from '../pages/admin/ProductEditorPage'
-import AdminCustomers from '../pages/admin/CustomersPage'
-import AdminCustomerDetails from '../pages/admin/CustomerDetailsPage'
-import AdminAnalytics from '../pages/admin/AnalyticsPage'
-import AdminInventory from '../pages/admin/InventoryPage'
-import AdminMessages from '../pages/admin/MessagesPage'
-
 export default function App() {
   return (
     <>
@@ -47,17 +38,6 @@ export default function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-        </Route>
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="products" element={<AdminProducts />} />
-          <Route path="products/new" element={<AdminProductEditor />} />
-          <Route path="products/:id/edit" element={<AdminProductEditor />} />
-          <Route path="customers" element={<AdminCustomers />} />
-          <Route path="customers/:id" element={<AdminCustomerDetails />} />
-          <Route path="analytics" element={<AdminAnalytics />} />
-          <Route path="inventory" element={<AdminInventory />} />
-          <Route path="messages" element={<AdminMessages />} />
         </Route>
       </Routes>
     </>
