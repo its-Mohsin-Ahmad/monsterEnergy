@@ -220,32 +220,31 @@ export function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-[#070A07] text-[#F5F7F4] flex flex-col antialiased selection:bg-[#B7FF00] selection:text-black">
-      <div className="flex flex-1 min-h-screen">
-        {/* ── FIXED LEFT SIDEBAR (DESKTOP) ────────────────────────── */}
-        <aside className="hidden lg:flex flex-col w-[265px] h-screen sticky top-0 bg-[#060806] border-r border-[#152016] select-none z-30">
-          {/* Top Brand Logo */}
-          <div className="px-6 py-5 flex items-center gap-3 border-b border-[#142015]">
-            <img
-              src={logoImg}
-              alt="Monster Energy"
-              className="w-8 h-8 object-contain shrink-0 filter drop-shadow-[0_0_8px_rgba(183,255,0,0.6)]"
-            />
-            <div>
-              <div className="font-display text-base tracking-wider text-white leading-none">
-                MONSTER
-              </div>
-              <div className="text-[11px] text-[#B7FF00] font-black tracking-widest leading-none mt-1 uppercase">
-                ADMIN
-              </div>
-              <div className="text-[9px] text-white/40 tracking-wider uppercase mt-0.5">
-                Control Center
-              </div>
+    <div className="h-screen w-screen overflow-hidden bg-[#070A07] text-[#F5F7F4] flex antialiased selection:bg-[#B7FF00] selection:text-black">
+      {/* ── FIXED LEFT SIDEBAR (DESKTOP) ────────────────────────── */}
+      <aside className="hidden lg:flex flex-col w-[265px] h-full shrink-0 bg-[#060806] border-r border-[#152016] select-none z-30 overflow-hidden">
+        {/* Top Brand Logo */}
+        <div className="px-6 py-5 shrink-0 flex items-center gap-3 border-b border-[#142015]">
+          <img
+            src={logoImg}
+            alt="Monster Energy"
+            className="w-8 h-8 object-contain shrink-0 filter drop-shadow-[0_0_8px_rgba(183,255,0,0.6)]"
+          />
+          <div>
+            <div className="font-display text-base tracking-wider text-white leading-none">
+              MONSTER
+            </div>
+            <div className="text-[11px] text-[#B7FF00] font-black tracking-widest leading-none mt-1 uppercase">
+              ADMIN
+            </div>
+            <div className="text-[9px] text-white/40 tracking-wider uppercase mt-0.5">
+              Control Center
             </div>
           </div>
+        </div>
 
-          {/* Nav List */}
-          <nav className="flex-1 overflow-y-auto scrollbar-thin px-3 py-3 space-y-0.5">
+        {/* Nav List - Internal Independent Scroll Only */}
+        <nav className="flex-1 overflow-y-auto overscroll-contain scrollbar-thin px-3 py-3 space-y-0.5">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon
               const isMatch = item.exact
@@ -296,7 +295,7 @@ export function AdminLayout() {
           </nav>
 
           {/* Sidebar Footer Link */}
-          <div className="p-4 border-t border-[#142015] flex items-center justify-between text-xs text-white/40">
+          <div className="p-4 shrink-0 border-t border-[#142015] flex items-center justify-between text-xs text-white/40">
             <Link
               to="/"
               target="_blank"
@@ -385,10 +384,10 @@ export function AdminLayout() {
           </div>
         )}
 
-        {/* ── RIGHT MAIN WRAPPER ───────────────────────────────────── */}
-        <div className="flex-1 flex flex-col min-w-0">
+        {/* ── RIGHT MAIN WRAPPER (FIXED VIEWPORT) ─────────────────── */}
+        <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
           {/* Top Bar matching screenshot */}
-          <header className="h-16 bg-[#080B08]/95 backdrop-blur-xl border-b border-[#142015] px-4 md:px-8 flex items-center justify-between sticky top-0 z-20">
+          <header className="h-16 shrink-0 bg-[#080B08]/95 backdrop-blur-xl border-b border-[#142015] px-4 md:px-8 flex items-center justify-between z-20">
             {/* Mobile menu toggle */}
             <div className="flex items-center gap-3 lg:hidden">
               <button
@@ -570,25 +569,26 @@ export function AdminLayout() {
             </div>
           </header>
 
-          {/* ── MAIN CONTENT CONTAINER ────────────────────────────── */}
-          <main className="flex-1 p-4 md:p-8 max-w-[1600px] w-full mx-auto">
-            <Outlet />
-          </main>
+          {/* ── SCROLLABLE MAIN CONTENT AREA ───────────────────────── */}
+          <div className="flex-1 overflow-y-auto overflow-x-hidden flex flex-col scrollbar-thin">
+            <main className="flex-1 p-4 md:p-8 max-w-[1600px] w-full mx-auto">
+              <Outlet />
+            </main>
 
-          {/* ── FOOTER MATCHING SCREENSHOT ───────────────────────── */}
-          <footer className="border-t border-[#142015] px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40 bg-[#060806]">
-            <div className="flex items-center gap-2.5">
-              <img src={logoImg} alt="Monster Energy" className="w-5 h-5 object-contain" />
-              <span className="font-display text-xs tracking-wider text-white">MONSTER ENERGY</span>
-              <span className="text-white/20">|</span>
-              <span className="text-[10px] tracking-widest text-[#B7FF00] font-semibold uppercase">
-                FUEL YOUR WORLD
-              </span>
-            </div>
-            <div>© 2025 Monster Energy. All rights reserved.</div>
-          </footer>
+            {/* ── FOOTER MATCHING SCREENSHOT ───────────────────────── */}
+            <footer className="shrink-0 border-t border-[#142015] px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40 bg-[#060806]">
+              <div className="flex items-center gap-2.5">
+                <img src={logoImg} alt="Monster Energy" className="w-5 h-5 object-contain" />
+                <span className="font-display text-xs tracking-wider text-white">MONSTER ENERGY</span>
+                <span className="text-white/20">|</span>
+                <span className="text-[10px] tracking-widest text-[#B7FF00] font-semibold uppercase">
+                  FUEL YOUR WORLD
+                </span>
+              </div>
+              <div>© 2025 Monster Energy. All rights reserved.</div>
+            </footer>
+          </div>
         </div>
-      </div>
 
       {/* ── GLOBAL SEARCH MODAL (CMD+K) ───────────────────────────── */}
       {searchOpen && (
