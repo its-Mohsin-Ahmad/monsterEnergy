@@ -54,11 +54,6 @@ export default function AdminInventoryPage() {
     e.preventDefault()
     if (!selectedProduct) return
     adjustStock(selectedProduct.id, adjustDelta, adjustType, adjustReason, adjustRef)
-    get().logAction(
-      'Stock Adjustment',
-      'Inventory',
-      `Adjusted stock for ${selectedProduct.name} by ${adjustDelta} ${adjustDelta >= 0 ? '+' : ''}units (${adjustType})`
-    )
     setAdjustModalOpen(false)
   }
 
@@ -280,7 +275,7 @@ export default function AdminInventoryPage() {
               </button>
             </div>
 
-            <form onSubmit={handleFormSubmit} className="space-y-4 mt-4 text-xs">
+            <form onSubmit={handleAdjustSubmit} className="space-y-4 mt-4 text-xs">
               <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
                 <div>
                   <div className="text-[10px] text-white/40 uppercase font-semibold">Current On-Hand</div>

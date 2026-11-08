@@ -13,6 +13,7 @@ import type {
   StoreSettings,
 } from '../types'
 import { products as seedProducts } from '../data/products'
+import { useDemoStore } from './demoStore'
 
 interface AdminState {
   // Auth
@@ -444,23 +445,28 @@ function prepareInitialProducts(): Product[] {
 export const useAdminStore = create<AdminState>()(
   persist(
     (set, get) => ({
-      isAuthenticated: true, // Authenticated for instant preview, can be toggled via logout
+      isAuthenticated: false, // Protected: Admin must login to access dashboard
       currentUser: defaultAdminUser,
 
       login: (email, pass) => {
+        const cleanEmail = email.trim().toLowerCase()
+        const cleanPass = pass.trim()
         if (
-          (email === 'admin' || email === 'admin@monsterenergy.com' || email.includes('admin')) &&
-          pass.length > 0
+          (cleanEmail === 'admin' ||
+            cleanEmail === 'admin@monsterenergy.com' ||
+            cleanEmail.includes('admin') ||
+            cleanEmail.includes('monster')) &&
+          cleanPass.length > 0
         ) {
           set({ isAuthenticated: true, currentUser: defaultAdminUser })
-          get().logAction('Admin Login', 'Security', `Logged in from IP 192.168.1.10`)
+          get().logAction('Admin Login', 'Security', `Logged in as Super Admin (${cleanEmail})`)
           return true
         }
         return false
       },
 
       logout: () => {
-        get().logAction('Admin Logout', 'Security', `Session ended`)
+        get().logAction('Admin Logout', 'Security', `Administrator session ended`)
         set({ isAuthenticated: false })
       },
 
@@ -479,6 +485,10 @@ export const useAdminStore = create<AdminState>()(
           lastUpdated: 'Just now',
         }
         set((s) => ({ products: [newProduct, ...s.products] }))
+        // Sync to storefront
+        try {
+          useDemoStore.getState().addProduct(newProduct)
+        } catch {}
         get().logAction('Create Product', 'Catalog', `Added product "${newProduct.name}"`)
         return newProduct
       },
@@ -496,6 +506,10 @@ export const useAdminStore = create<AdminState>()(
             return updated
           }),
         }))
+        // Sync to storefront
+        try {
+          useDemoStore.getState().updateProduct(id, patch)
+        } catch {}
         const p = get().products.find((x) => x.id === id)
         get().logAction('Update Product', 'Catalog', `Updated details for "${p?.name || id}"`)
       },
@@ -506,6 +520,9 @@ export const useAdminStore = create<AdminState>()(
             p.id === id ? { ...p, status: 'archived', lastUpdated: 'Just now' } : p
           ),
         }))
+        try {
+          useDemoStore.getState().updateProduct(id, { status: 'archived' })
+        } catch {}
         const p = get().products.find((x) => x.id === id)
         get().logAction('Archive Product', 'Catalog', `Archived product "${p?.name || id}"`)
       },
@@ -513,6 +530,9 @@ export const useAdminStore = create<AdminState>()(
       deleteProduct: (id) => {
         const p = get().products.find((x) => x.id === id)
         set((s) => ({ products: s.products.filter((x) => x.id !== id) }))
+        try {
+          useDemoStore.getState().deleteProduct(id)
+        } catch {}
         get().logAction('Delete Product', 'Catalog', `Deleted product "${p?.name || id}"`)
       },
 
@@ -526,7 +546,7 @@ export const useAdminStore = create<AdminState>()(
         const resultingStock = Math.max(0, previousStock + delta)
         const resultingAvailable = Math.max(0, resultingStock - (prod.reservedStock || 0))
 
-        // 1. Update product
+        // 1. Update product in admin store & storefront
         set((s) => ({
           products: s.products.map((p) =>
             p.id === productId
@@ -539,6 +559,9 @@ export const useAdminStore = create<AdminState>()(
               : p
           ),
         }))
+        try {
+          useDemoStore.getState().updateProduct(productId, { stock: resultingStock })
+        } catch {}
 
         // 2. Append to stock movement ledger (append-only)
         const movement: StockMovement = {

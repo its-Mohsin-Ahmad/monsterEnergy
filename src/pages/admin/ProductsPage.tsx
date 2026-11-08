@@ -91,7 +91,6 @@ export default function AdminProductsPage() {
         ...formData,
         slug: formData.slug || formData.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
       })
-      get().logAction('Edit Product', 'Product', `Edited product: ${editingProduct.name}`)
     } else {
       addProduct({
         ...formData,
@@ -99,7 +98,6 @@ export default function AdminProductsPage() {
         image: products[0]?.image || '',
         gallery: [products[0]?.image || ''],
       })
-      get().logAction('Create Product', 'Product', `Created new product: ${formData.name}`)
     }
     setModalOpen(false)
   }
